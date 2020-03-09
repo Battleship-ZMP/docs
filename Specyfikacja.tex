@@ -1,0 +1,127 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[pdfusetitle]{hyperref}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[MeX]{polski}
+\usepackage{tabularx}
+\usepackage[a4paper,left=3cm,right=3cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{titlesec}
+\usepackage{indentfirst}
+\usepackage{hyperref}
+\usepackage[normalem]{ulem}
+\usepackage{secdot}
+
+\title{Specyfikacja CoolRecipes}
+\author{}
+
+\begin{document}
+  \maketitle
+
+  \section{Wprowadzenie}
+  Aplikacja \textit{CoolRecipes} służy do przechowywania, wyszukiwania oraz dzielenia się swoimi ulubionymi przepisami kulinarnymi. Aplikacja jest dostępna z poziomu wyszukiwarki internetowej lub można ją pobrać w formie aplikacji desktopowej lub aplikacji na systemy Android. Użytkownik posiada dostęp do katalogu przesłanych przepisów oraz możliwość dodania własnych pozycji. Każdy przepis z katalogu można zapisać w swojej własnej książce kucharskiej.
+
+  \section{Zespół}
+  \begin{itemize}
+    \item Daniel Hajduk (Desktop App)  
+    \item Daniel Lewicki (Web App)
+    \item Maciej Gorgoń (Mobile App)
+  \end{itemize}
+
+  \section{Technologia}
+  
+  \begin{itemize}
+    \item API
+    \begin{itemize}
+    \item Firebase >= 7.10.0
+    \end{itemize}
+    
+    \item Web Frontend
+    \begin{itemize}
+      \item Vue 2.x
+    \end{itemize}
+    
+    \item Mobile App
+    \begin{itemize}
+      \item Kotlin >= 1.3.70
+    \end{itemize}
+    
+    \item Desktop App
+    \begin{itemize}
+      \item React >= 16.13.0
+      \item Electron >= 8.1.0
+    \end{itemize}
+    
+    
+  \end{itemize}
+
+  Aplikacja internetowa jest kompatybilna z najnowszą wersją przeglądarek Chrome oraz Firefox. Aplikacja mobilna oraz desktopowa została przetestowana na najnowszych wersjach systemu Android oraz Windows 10.  
+
+  \section{Role}
+  Przewiduje się trzy podstawowe role w systemie:
+
+  \begin{itemize}
+    \item gość (osoba anonimowa, niezalogowana),
+    \item zalogowany użytkownik,
+    \item administrator.
+  \end{itemize}
+
+  \section{Funkcjonalności}
+  Aplikacja implementuje następujące funkcjonalności.
+
+  \subsection{Autoryzacja}
+  Każdy gość może utworzyć własne konto, poprzez podanie odpowiednich danych jak: adres email, nazwa użytkownika oraz hasło. Po pomyślnym zarejestrowaniu nowego użytkownika, gość może się zalogować odpowiednimi danymi.
+  
+  Osoba niezarejestrowana może się również zarejestrować poprzez media społecznościowe: Facebook oraz Google.
+    
+  \subsection{Tworzenie Przepisów}
+  Zalogowany użytkownik może stworzyć własny przepis oraz opublikować go w aplikacji, poprzez przygotowany formularz.
+  Każdy przepis zawiera:
+  \begin{itemize}
+      \item Tytuł
+      \item Krótki opis
+      \item Zdjęcie (opcjonalnie)
+      \item Listę składników
+      \item Opis wykonania
+  \end{itemize}
+
+  \subsection{Katalog przepisów}
+    Każda osoba niezalogowana posiada dostęp do katalogu przepisów, które może przeglądać. Zawiera on przepisy udostępnione przez użytkowników, przedstawiane w formie podglądowej, mającej zdjęcie, tytuł orz krótki opis. Użytkownik ma możliwość sortowania przepisów poprzez czas dodania, alfabetycznie po nazwie lub poprzez ocenę.
+    Istnieje również możliwość wyszukiwania przepisów poprzez nazwę.
+    
+  \subsection{Widok przepisu}
+  Widok przepisu jest dostępny dla każdego użytkownika i zawiera pełny podgląd danego przepisu. Zawiera zdjęcie, tytuł, krótki opis, listę składników oraz pełny opis wykonania dania.
+  Użytkownicy zalogowani mogą dodać daną pozycję do swojej książki kucharskiej.
+  
+  \subsection{Zarządzanie przepisem}
+  Właściciel przepisu lub Administrator może edytować każdą część pozycji lub usunąć cały przepis poprzez odpowiedni formularz.
+  
+   \subsection{Ocena przepisu}
+  Każdy przepis może ulec ocenie przez zalogowanego użytkownika, w skali od 1 do 5.
+  \subsection{Książka kucharska}
+  Osoba zalogowana posiada listę zawierającą jego autorskie przepisy oraz listę przepisów, które zapisał. Książka kucharska działa podobnie jak katalog, można ją przeszukać po nazwie oraz posortować według daty dodania lub alfabetycznie.
+
+  \subsection{Panel użytkownika}
+  Każda osoba zalogowana posiada swój publiczny panel użytkownika, który zawiera:
+  \begin{itemize}
+    \item podstawowe dane o użytkowniku
+    \begin{itemize}
+        \item email
+        \item nazwa
+        \item krótki opis (opcjonalnie)
+    \end{itemize}
+  \end{itemize}
+
+  Ponadto jeśli użytkownik jest zalogowany i odwiedza swój własny profil, dostępna jest dla niego konfiguracja konta:
+
+  \begin{itemize}
+    \item zmiana nazwy użytkownika,
+    \item zmiana hasła,
+    \item dezaktywacja konta.
+  \end{itemize}
+
+  \subsection{Panel administratora}
+  Administrator ma możliwość skorzystania z dedykowanego panelu do monitorowania i modyfikowania działania aplikacji. Posiada możliwość edycji listy użytkowników.
+\end{document}
